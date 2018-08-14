@@ -23,11 +23,18 @@ class ofApp : public ofBaseApp{
 	public:
 		// ofEasyCam cam;
 		ofxBox2d box2d;
-		vector   <shared_ptr<Rondella> > particles;
+		vector <shared_ptr<Rondella> > particles;
+		vector <shared_ptr<ofxBox2dEdge> > container;
+		
+		vector <ofVec2f> containerLine;
 
 		ofParameter<int> quantity;
 		ofParameter<float> gravity1;
 		ofParameter<float> gravity2;
+		ofParameter<int> circleRes;
+		ofParameter<int> circleRadius;
+		ofParameter<float> circleRotation;
+
 		ofxGui panel;
 
 		// --------------------------------------------------------------
