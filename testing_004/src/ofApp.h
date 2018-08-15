@@ -4,16 +4,38 @@
 #include "ofxBox2d.h"
 #include "ofxGuiExtended.h"
 
+class RondellaSpecs {
+public:
+	ofColor color;
+	int     id;
+};
+
+// --------------------------------------------------------------
+
 class Rondella : public ofxBox2dCircle {
 	public:
+		void setupTheCustomData() {
+				static int colors[] = {0xcae72b, 0xe63b8f, 0x2bb0e7};
+				
+				setData(new RondellaSpecs());
+				RondellaSpecs * specs = (RondellaSpecs*)getData();
+				
+				specs->id = ofRandom(0, 100);
+				specs->color.setHex(colors[(int)ofRandom(0, 3)]);
+			}
+	
 		void draw() {
+			RondellaSpecs * specs = (RondellaSpecs*)getData();
 			ofPushMatrix();
 				ofTranslate(getPosition());
 				ofRotateZDeg(getRotation());
-				ofFill(); ofSetHexColor(0xf6c738);
+				
+				ofFill(); ofSetColor(specs->color);
+
 				ofDrawCircle(0, 0, getRadius());
 			ofPopMatrix();
 		}
+
 };
 
 // --------------------------------------------------------------
@@ -25,21 +47,26 @@ class ofApp : public ofBaseApp{
 		ofxBox2d box2d;
 		vector <shared_ptr<Rondella> > particles;
 		vector <shared_ptr<ofxBox2dEdge> > container;
-		
-		vector <ofVec2f> containerLine;
+		vector <ofVec2f> containerVec;
 
 		ofParameter<int> quantity;
 		ofParameter<float> gravity1;
 		ofParameter<float> gravity2;
-		ofParameter<int> circleRes;
-		ofParameter<int> circleRadius;
+		ofParameter<int> resolution;
+		ofParameter<int> radius;
+		ofParameter<int> bounce;
 		ofParameter<float> circleRotation;
+		ofParameter<float> minDis;
+		ofParameter<bool> showContainer;
+		ofParameter<bool> showContainerBg;
+		ofParameter<bool> magneticCenter;
 
 		ofxGui panel;
 
 		// --------------------------------------------------------------
 		
 		int windowSide = 1000;
+		int center = windowSide / 2;
 		void setup();
 		void update();
 		void draw();
