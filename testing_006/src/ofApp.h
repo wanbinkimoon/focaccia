@@ -7,16 +7,17 @@ class ofApp : public ofBaseApp{
 	public:
 		ofEasyCam cam;
 
-		int grid = 11;
+		int grid = 15;
 		int padding = 20;
 		int border = 40;
-		int boxW;
-		int boxH;
+		float boxW;
+		float boxH;
 
 		// --------------------------------------------------------------
+		
 		int window = 1000;
-		int centerX = ofGetWidth() / 2;
-		int centerY = ofGetHeight() / 2;
+		float centerX = ofGetWidth() / 2;
+		float centerY = ofGetHeight() / 2;
 
 		void setup();
 		void update();
