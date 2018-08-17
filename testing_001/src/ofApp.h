@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxGuiExtended.h"
 
 class ofApp : public ofBaseApp{
 
@@ -11,6 +12,7 @@ class ofApp : public ofBaseApp{
 		ofParameter<int> circleRadius;
 		ofParameter<int> circleDistance;
 		ofParameter<int> pointRadius;
+    ofParameter<int> slide;
 		ofParameter<float> timeRall;
 
 		vector <ofVec3f> cicleOne;
@@ -18,6 +20,10 @@ class ofApp : public ofBaseApp{
 		vector <ofVec3f> cicleThree;
 		vector <ofVec3f> cicleFour;
 
+		ofParameter<bool> invertRotation;
+		ofParameter<bool> invertPoints;
+    ofParameter<bool> flipCircles;
+		ofxGui panel;
 		// --------------------------------------------------------------
 		
 		void setup();

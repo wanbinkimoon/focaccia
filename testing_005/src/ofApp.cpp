@@ -2,7 +2,11 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	ofSetWindowShape(windowSide, windowSide);
+	// ofSetWindowShape(windowSide, windowSide);
+	ofSetFullscreen(true);
+	centerX = ofGetWidth() / 2;
+	centerY = ofGetHeight() / 2;
+	
 	ofBackground(0);
 	controlSetup();
 	shapeSetup();
@@ -18,8 +22,8 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	// ofSetColor(200, 150, 200);
-	// ofDrawBitmapString(ofToString(scaledVol), 20, 20);
+	ofSetColor(200);
+ ofDrawBitmapString(ofToString(ofGetFrameRate()), 20, ofGetHeight() - 20);
 	// ofDrawBitmapString(ofToString(bounce), 20, 40);
 	
 	shapeDraw();

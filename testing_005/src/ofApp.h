@@ -61,10 +61,12 @@ class ofApp : public ofBaseApp{
 		// ofEasyCam cam;
 		ofxBox2d box2d;
 		vector <shared_ptr<Rondella> > particles;
+		vector <shared_ptr<Rondella> > particlesSides;
 		vector <shared_ptr<ofxBox2dEdge> > container;
 		vector <ofVec2f> containerVec;
 
 		ofParameter<int> quantity;
+		ofParameter<int> quantityBorders;
 		ofParameter<float> gravity1;
 		ofParameter<float> gravity2;
 		ofParameter<int> resolution;
@@ -76,6 +78,7 @@ class ofApp : public ofBaseApp{
 		ofParameter<bool> showContainer;
 		ofParameter<bool> showContainerBg;
 		ofParameter<bool> magneticCenter;
+		ofParameter<bool> invertCircle;
 
 		ofxGuiGroup *monitorVal;
 		ofxGui panel;
@@ -88,7 +91,8 @@ class ofApp : public ofBaseApp{
 		// --------------------------------------------------------------
 		
 		int windowSide = 1000;
-		int center = windowSide / 2;
+		int centerX;
+		int centerY;
 		void setup();
 		void update();
 		void draw();
